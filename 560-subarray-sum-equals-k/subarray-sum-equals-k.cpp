@@ -9,8 +9,7 @@ public:
 
         for(int i = 0; i < n; i++){
             presum += nums[i];
-            int remove = presum - k;
-            cnt += mp[remove];
+            cnt += mp[presum - k];
             mp[presum] += 1;
         }
         return cnt;
