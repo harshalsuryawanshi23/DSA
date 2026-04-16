@@ -11,7 +11,8 @@ public:
             int w = j-i;
             int area = h*w;
             ans = max(ans,area);
-            height[i] > height[j] ? j-- : i++;
+            if(height[i] > height[j]) j--; 
+            else i++;
         }
         return ans;
     }
