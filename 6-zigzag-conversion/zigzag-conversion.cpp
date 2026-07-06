@@ -1,25 +1,29 @@
 class Solution {
 public:
     string convert(string s, int numRows) {
-        vector<string> sr(numRows,"");
-        int i = 0;
-        bool up = 0;
-       for(char ch : s){
-        
-        sr[i].push_back(ch);
+        if (numRows == 1 || numRows >= s.size())
+            return s;
 
-        if(numRows != 1){
-            if(i == 0) up = 0;
-            if(i == numRows-1) up = 1;
+        vector<string> rows(numRows);
 
-            if(up) i--;
-            else i++;    
+        int row = 0;
+        int dir = 1;  
+
+        for (char ch : s) {
+            rows[row] += ch;
+
+            if (row == 0)
+                dir = 1;
+            else if (row == numRows - 1)
+                dir = -1;
+
+            row += dir;
         }
-       } 
-       string ans = "";
-       for(string str : sr){
-        ans += str;
-       }
-       return ans;
+
+        string ans;
+        for (string &str : rows)
+            ans += str;
+
+        return ans;
     }
 };
