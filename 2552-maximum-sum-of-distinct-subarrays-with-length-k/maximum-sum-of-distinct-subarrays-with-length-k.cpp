@@ -5,7 +5,8 @@ public:
         long long sum = 0;
         long long maxsum = INT_MIN;
         int i = 0;
-        for (int j = 0; j < nums.size(); j++) {
+        int n = nums.size();
+        for (int j = 0; j < n; j++) {
             while (mp[nums[j]] > 0) {
                 mp[nums[i]]--;
                 sum -= nums[i];
