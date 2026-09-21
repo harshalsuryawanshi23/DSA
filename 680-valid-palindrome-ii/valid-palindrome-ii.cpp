@@ -1,6 +1,6 @@
 class Solution {
 public:
-    bool ispl(string s,int st, int ed){
+    bool ispl(const string& s,int st, int ed){
         while(st < ed){
             if(s[st++] != s[ed--]) return false;
         }
