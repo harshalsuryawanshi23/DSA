@@ -1,37 +1,15 @@
 class Solution {
 public:
     bool canTransform(vector<int>& source, vector<int>& target) {
+        long long s1 = 0;
+        long long s2 = 0;
 
-        vector<long long> s(source.begin(), source.end());
+        for(int x : source)
+            s1 += x;
 
-        int i = -1;
-        int j = -1;
-        int cur = 0;
+        for(int x : target)
+            s2 += x;
 
-        while(cur < s.size()) {
-
-            if(s[cur] != target[cur]) {
-                if(i == -1)
-                    i = cur;
-                else
-                    j = cur;
-            }
-
-            if(j != -1 && i != -1) {
-
-                s[j] = s[i] - (long long)target[i] + s[j];
-
-                s[i] = target[j];
-
-                i = -1;
-
-                if(s[j] == target[j])
-                    j = -1;
-            }
-
-            cur++;
-        }
-
-        return i == -1 && j == -1;
+        return s1 == s2;
     }
 };
